@@ -6,11 +6,9 @@ class Test extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          body: ListView(
-        children: checklist,
-      )),
-    );
+    return Scaffold(
+        body: ListView(
+      children: checklist,
+    ));
   }
 }

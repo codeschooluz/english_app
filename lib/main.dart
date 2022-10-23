@@ -1,5 +1,5 @@
-// import 'package:english_app/check.dart';
 import 'package:flutter/material.dart';
+import 'package:english_app/check.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -76,18 +76,5 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
-  }
-}
-
-class Test extends StatelessWidget {
-  List<Widget> checklist;
-  Test({required this.checklist, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: ListView(
-      children: checklist,
-    ));
   }
 }
