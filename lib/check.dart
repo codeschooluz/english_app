@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 
-class Test extends StatelessWidget {
+class Results extends StatelessWidget {
   List<Widget> checklist;
-  Test({required this.checklist, super.key});
-
+   Results({required this.checklist,super.key});
+  
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
-        body: ListView(
-      children: checklist,
-    ));
+      appBar: AppBar(
+        title: Text('Results'),
+        centerTitle: true,
+      ),
+
+      backgroundColor: Colors.white,
+      body:ListView.separated(itemBuilder: (context, index) {
+            return checklist[index];
+          }, separatorBuilder: (context, index) => Divider(), itemCount:checklist.length ),
+        
+      
+    );
   }
 }
