@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'homepage.dart';
 
-void main(){
-  runApp(MaterialApp(
-  debugShowCheckedModeBanner: false,
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: HomePage(),
   ));
 }

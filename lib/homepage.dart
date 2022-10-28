@@ -41,7 +41,8 @@ class _HomePageState extends State<HomePage> {
         body: FutureBuilder(
           future: func(),
           builder: (context, snapshot) {
-            if (snapshot.hasData) {
+            if (snapshot.connectionState == ConnectionState.done &&
+                snapshot.hasData) {
               return Center(
                 child: SingleChildScrollView(
                   child: Column(
@@ -100,29 +101,42 @@ class _HomePageState extends State<HomePage> {
                                         : Color.fromARGB(255, 230, 190, 190),
                                     trailing: checker ? Text('✅') : Text('❌'),
                                     title: Text(
-                                        "${snapshot.data!['data'][index]['question']}",
-                                        style: TextStyle(
-                                          fontSize: 18
-                                        ),
-                                        ),
+                                      "${snapshot.data!['data'][index]['question']}",
+                                      style: TextStyle(fontSize: 18),
+                                    ),
                                     //isThreeLine: true,
                                     subtitle: checker
                                         ? Text(
                                             'Correct ',
-                                            style:
-                                                GoogleFonts.offside(color: Colors.green,fontWeight: FontWeight.w600,fontSize: 15),
+                                            style: GoogleFonts.offside(
+                                                color: Colors.green,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 15),
                                           )
                                         : Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text('Your answer: ${task.text}'),
-                                              
-                                                   RichText(text: TextSpan(
-                                                    children: [
-                                                      TextSpan(text: 'Correct answer:',style: GoogleFonts.offside(color: Color.fromARGB(255, 185, 66, 36),fontWeight: FontWeight.w600,fontSize: 15)),
-                                                      TextSpan(text: ' ${snapshot.data!['data'][index]['answer']}',style: TextStyle(color: Colors.green,fontWeight: FontWeight.w500,fontSize: 14))
-                                                    ]
-                                                   ))
+                                              RichText(
+                                                  text: TextSpan(children: [
+                                                TextSpan(
+                                                    text: 'Correct answer:',
+                                                    style: GoogleFonts.offside(
+                                                        color: Color.fromARGB(
+                                                            255, 185, 66, 36),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 15)),
+                                                TextSpan(
+                                                    text:
+                                                        ' ${snapshot.data!['data'][index]['answer']}',
+                                                    style: TextStyle(
+                                                        color: Colors.green,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 14))
+                                              ]))
                                             ],
                                           ),
                                   ),
@@ -153,8 +167,9 @@ class _HomePageState extends State<HomePage> {
               return Center(
                 child: Text("${snapshot.error}"),
               );
-            } else
+            } else {
               return Center(child: CircularProgressIndicator());
+            }
           },
         ),
       ),
